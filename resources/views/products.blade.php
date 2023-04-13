@@ -11,7 +11,7 @@
             <th>Unit</th>
             <th>Unit Price</th>
             <th>Category</th>
-            <th>View Detail</th>
+            <th class="table-success">View Detail</th>
         </tr>
 
         @php
