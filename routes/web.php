@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -14,20 +14,22 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//list all products
+Route::get('/', [ProductController::class, 'index']);
+//show single product
+Route::get('/product/{product}', [ProductController::class, 'show']);
 
-Route::get('/', function () {
-    return view('products', [
-        'heading' => 'Product Catalog',
-        'products' => Product::all()
-    ]);
-});
+//show create form
+Route::get('/products/create', [ProductController::class, 'create']);
 
-Route::get('/product/{product}', function(Product $product){ //model-route binding
-    return view('product',[
-        'product' => $product
-    ]);
-});
+//save form
+Route::post('/product', [ProductController::class, 'store']);
 
-// Route::get('/products', function(){
-//     return "this is the product page";
-// });
+//delete record
+Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+
+//update form
+Route::get('/product/{product}/edit', [ProductController::class, 'edit']);
+
+//save update form
+Route::put('/products/{product}', [ProductController::class, 'update']);
