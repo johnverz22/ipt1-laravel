@@ -32,6 +32,10 @@ class ProductController extends Controller
             'name'=>'required|unique:products'
         ]);
 
+        if($request->hasFile('image_url')){
+            $formFields['image_url'] =  $request->file('image_url')->store('images','public');
+        }
+
        Product::create($formFields);
 
        return redirect('/')->with('success','New product saved successfully!');

@@ -1,6 +1,6 @@
 <x-layout>
     <h1>New Product Form</h1>
-    <form method="POST" action="/product">
+    <form method="POST" action="/product" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
           <label for="name" class="col-sm-2 col-form-label">Product Name</label>
@@ -45,6 +45,14 @@
                 <option value="meat">Meat</option>
                 <option value="fish">Fish</option>
               </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="image_url" class="col-sm-2 col-form-label">Image</label>
+            <div class="col-sm-10">
+              <input type="file" name="image_url" class="form-control">
+              <div class="text-danger">
+            </div>
             </div>
         </div>
         <button class="btn btn-primary">Save</button>

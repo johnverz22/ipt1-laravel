@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('unit', 10)->nullable();
             $table->decimal('unitPrice', 8, 2); //decimal(8,2)
             $table->string('category', 50);
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->text('image_url')->nullable();
             $table->timestamps(); //createAt, updateAT
             /* CREATE TABLE COMMANDS IN MYSQL */
         });
