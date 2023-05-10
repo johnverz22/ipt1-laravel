@@ -3,14 +3,17 @@
     <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
         <form class="mb-4">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search products.." aria-label="Search products.." aria-describedby="button-addon2">
-                <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+                <input type="text" value="{{request('search')}}"" name="search" class="form-control" placeholder="Search products.." aria-label="Search products.." aria-describedby="button-addon2">
+                <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
               </div>
         </form>
 
         <div class="row"></div>
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-            @foreach($products as $product)
+            
+            @unless($products->isEmpty())
+                
+              @foreach($products as $product)
                 <div class="col">
                     <div class="card h-100 shadow-sm"> <img
                             src="{{ $product->image_url ? asset('storage/'.$product->image_url) : asset('/images/icon.png')}}"
@@ -24,6 +27,12 @@
                     </div>
                 </div>
             @endforeach
+
+            @else
+                <div class="row">
+                    <span>No products found.</span>
+                </div>
+            @endunless
         </div>
     </div>
 </main>

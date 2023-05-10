@@ -41,7 +41,7 @@
             <label for="category" class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-10">
               <select name="category" class="form-control">
-                <option value="vegatable">Vegetable</option>
+                <option value="vegetable">Vegetable</option>
                 <option value="meat">Meat</option>
                 <option value="fish">Fish</option>
               </select>

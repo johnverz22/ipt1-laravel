@@ -23,11 +23,37 @@
               <a class="nav-link" aria-current="page" href="/products/create">New Product</a>
             </li>
           </ul>
+
+          <ul class="navbar-nav">
+            @auth
+            <li class="nav-item">
+              <a class="nav-link disabled" >Welcome {{auth()->user()->name}}!</a>
+            </li>
+            <li class="nav-item">
+              <form action="/logout" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-link">Logout</button>
+              </form>
+
+            </li>
+            @else
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Login</a>
+              </li>
+            @endauth
+ 
+          </ul>
+
         </div>
       </div>
     </nav>
     <div class = "container">
-      
+      @if(session()->has('success'))
+          <x-notify type="success" title="Success" content="{{session('success')}}" />
+      @endif
         {{ $slot }}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

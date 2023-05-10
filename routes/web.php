@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,12 @@ Route::get('/product/{product}/edit', [ProductController::class, 'edit']);
 
 //save update form
 Route::put('/products/{product}', [ProductController::class, 'update']);
+
+//register here
+Route::get('/register', [UserController::class, 'create']);
+
+//save registration
+Route::post('/users', [UserController::class, 'store']);
+
+//logout
+Route::post('/logout', [UserController::class, 'logout']);

@@ -17,4 +17,18 @@ class Product extends Model
         elseif($this->category=='fish') return 'Fresh Fish';
         else return ucfirst($this->category);
     }
+
+    public function scopeFilter($query, array $filters){
+        //null coalesce operator in laravel
+        //same as isset($filter['search'])
+        if($filters['search'] ?? false){
+            $query->where('name', 'like', '%'.$filters['search'].'%')
+                    ->orWhere('category', 'like', '%'.$filters['search'].'%')
+                      ->orWhere('description',  'like', '%'.$filters['search'].'%');
+        }
+
+        //select id, name, category ... from products where name like '%search%' or
+        //category like '%search%' or description like '%search%'
+    }
+
 }

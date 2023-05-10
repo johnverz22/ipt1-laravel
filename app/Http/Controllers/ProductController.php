@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function index(){
         return view('products.products2', [
             'heading' => 'Product Catalog',
-            'products' => Product::paginate(5)
+            'products' => Product::latest()->filter(request(['search']))->simplePaginate(5)
         ]);
     }
 
