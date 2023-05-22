@@ -36,6 +36,9 @@ class ProductController extends Controller
             $formFields['image_url'] =  $request->file('image_url')->store('images','public');
         }
 
+        //set user_id / creator of product
+        $formFields['user_id'] = auth()->id();
+
        Product::create($formFields);
 
        return redirect('/')->with('success','New product saved successfully!');
@@ -63,5 +66,11 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect('/')->with('success', 'Product deleted successfully!');
+    }
+
+    public function manage(){
+        return view("products.products", [
+            'products' => auth()->user()->products()->paginate(5)
+        ]);
     }
 }

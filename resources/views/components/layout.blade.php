@@ -19,9 +19,14 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNavBar">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/products/create">New Product</a>
-            </li>
+            @auth
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/products/create">New Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/products/manage">Manage Products</a>
+              </li>
+            @endauth
           </ul>
 
           <ul class="navbar-nav">

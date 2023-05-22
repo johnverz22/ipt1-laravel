@@ -1,5 +1,4 @@
 <x-layout>
-    <x-layout>
         <h1>Register User</h1>
         <form method="POST" action="/users">
             @csrf
@@ -59,7 +58,4 @@
             </div>
             <button class="btn btn-primary">Register</button>
         </form>
-    
-    </x-layout>
-
 </x-layout>

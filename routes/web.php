@@ -21,25 +21,34 @@ Route::get('/', [ProductController::class, 'index']);
 Route::get('/product/{product}', [ProductController::class, 'show']);
 
 //show create form
-Route::get('/products/create', [ProductController::class, 'create']);
+Route::get('/products/create', [ProductController::class, 'create'])->middleware('auth');
 
 //save form
-Route::post('/product', [ProductController::class, 'store']);
+Route::post('/product', [ProductController::class, 'store'])->middleware('auth');
 
 //delete record
-Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->middleware('auth');
 
 //update form
-Route::get('/product/{product}/edit', [ProductController::class, 'edit']);
+Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->middleware('auth');
 
 //save update form
-Route::put('/products/{product}', [ProductController::class, 'update']);
+Route::put('/products/{product}', [ProductController::class, 'update'])->middleware('auth');
+
+//manage products
+Route::get('/products/manage', [ProductController::class, 'manage'])->middleware('auth');
+
 
 //register here
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 //save registration
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', [UserController::class, 'store'])->middleware('guest');
+
+
+//show login form
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 //logout
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+

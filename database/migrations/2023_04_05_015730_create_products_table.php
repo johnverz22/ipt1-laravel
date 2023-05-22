@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('category', 50);
             $table->text('description')->nullable();
             $table->text('image_url')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //foreign key to user table, the onwner of this product
             $table->timestamps(); //createAt, updateAT
             /* CREATE TABLE COMMANDS IN MYSQL */
         });

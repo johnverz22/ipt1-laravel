@@ -33,6 +33,11 @@ class UserController extends Controller
 
     }
 
+    public function login(){
+
+        return view('users.login');
+    }
+
     public function logout(Request $request){
         auth()->logout();
         $request->session()->invalidate();

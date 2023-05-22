@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','unit','unitPrice', 'category', 'image_url','description'];
+    protected $fillable = ['name','unit','unitPrice', 'category', 'image_url','description', 'user_id'];
 
     public function getCategory(){
         if($this->category == 'meat') return 'Fresh Meat';
@@ -29,6 +29,11 @@ class Product extends Model
 
         //select id, name, category ... from products where name like '%search%' or
         //category like '%search%' or description like '%search%'
+    }
+
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }

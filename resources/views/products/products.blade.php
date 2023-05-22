@@ -1,7 +1,7 @@
 <x-layout>
 
 <div class="row">
-    <h1>{{ $heading }}</h1>
+    <h1>Manage Products</h1>
 
     @if(session()->has('success'))
         <x-notify type="success" title="Success" content="{{session('success')}}" />
